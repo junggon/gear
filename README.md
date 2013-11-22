@@ -12,7 +12,7 @@ GEAR is a C++ library for kinematics and dynamics of articulated rigid body syst
 
 How to compile
 ==============
-A C++ compiler and CMake are necessary to build GEAR.
+CMake and a C++ compiler are necessary to build GEAR.
 
 - On Linux, do make in the terminal to compile the library under gear/build_release.
 - On Windows, execute runcmake_win.bat to create a Visual Studio solution file under gear/build. 
