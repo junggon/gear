@@ -18,4 +18,4 @@ build_debug/Makefile: CMakeLists.txt
 	mkdir -p build_debug;cd build_debug;export CC=gcc;export CXX=g++;cmake -DCMAKE_BUILD_TYPE=Debug ..
 
 install_dependencies_ubuntu:
-	sudo apt-get install build-essential cmake freeglut3-dev
+	sudo apt-get install build-essential cmake freeglut3-dev binutils-gold libxmu-dev libxi-dev
