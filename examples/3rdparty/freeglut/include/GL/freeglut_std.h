@@ -43,7 +43,7 @@
  */
 
 /* Define FREEGLUT_LIB_PRAGMAS to 1 to include library
- * pragmas or to 1 to exclude library pragmas.
+ * pragmas or to 0 to exclude library pragmas.
  * The default behavior depends on the compiler/platform.
  */
 #   ifndef FREEGLUT_LIB_PRAGMAS
@@ -57,19 +57,15 @@
 #  ifndef WIN32_LEAN_AND_MEAN
 #    define WIN32_LEAN_AND_MEAN 1
 #  endif
-#   define NOMINMAX
+#  ifndef NOMINMAX
+#    define NOMINMAX
+#  endif
 #   include <windows.h>
 
 /* Windows static library */
 #   ifdef FREEGLUT_STATIC
 
-#       define FGAPI
-#       define FGAPIENTRY
-
-        /* Link with Win32 static freeglut lib */
-#       if FREEGLUT_LIB_PRAGMAS
-#           pragma comment (lib, "freeglut_static.lib")
-#       endif
+#error Static linking is not supported with this build. Please remove the FREEGLUT_STATIC preprocessor directive, or download the source code from http://freeglut.sf.net/ and build against that.
 
 /* Windows shared library (DLL) */
 #   else
