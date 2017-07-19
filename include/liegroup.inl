@@ -2073,12 +2073,12 @@ inline bool matSet_invNN(gReal *re, const gReal *a, int n)
 	matSet(a2, a, nn); // a2=a
 	for (i=0; i<nn; i++) { re[i] = 0.0; }
 	__dgefa(a2, n, n, ipvt, info);
-	if ( info != 0 ) { delete ipvt; delete a2; return false; }
+	if ( info != 0 ) { delete [] ipvt; delete [] a2; return false; }
 	for (i=0; i<n; i++ ) {
 		re[i+n*i] = 1.0;
 		__dgesl(a2, n, n, ipvt, &re[n*i], 0);
 	}
-	delete ipvt; delete a2;
+	delete [] ipvt; delete [] a2;
 	return true;
 }
 

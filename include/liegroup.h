@@ -47,7 +47,7 @@ private:
 	gReal _v[3];
 public:
 	// constructors
-	Vec3() {}
+	Vec3() { _v[0] = _v[1] = _v[2] = 0.0; }
 	Vec3(gReal d) { _v[0] = _v[1] = _v[2] = d; }
 	Vec3(const gReal v[]) { _v[0] = v[0]; _v[1] = v[1]; _v[2] = v[2]; }
 	Vec3(gReal v0, gReal v1, gReal v2) { _v[0] = v0; _v[1] = v1; _v[2] = v2; }
@@ -98,7 +98,7 @@ private:
 	gReal _w[6];	// upper three : angular velocity,  lower three : linear velocity
 public:
 	// constructors
-	se3() {}
+	se3() { _w[0] = _w[1] = _w[2] = _w[3] = _w[4] = _w[5] = 0.0; }
 	se3(gReal k) { _w[0] = _w[1] = _w[2] = _w[3] = _w[4] = _w[5] = k; }
 	se3(gReal w0, gReal w1, gReal w2, gReal w3, gReal w4, gReal w5) { _w[0] = w0;	_w[1] = w1;	_w[2] = w2; _w[3] = w3;	_w[4] = w4;	_w[5] = w5; }
 	se3(const se3 &s) { _w[0] = s._w[0]; _w[1] = s._w[1]; _w[2] = s._w[2]; _w[3] = s._w[3]; _w[4] = s._w[4]; _w[5] = s._w[5]; }
@@ -178,7 +178,7 @@ private:
 	gReal _m[6];
 public:
 	// constructors
-	dse3() {}
+	dse3() { _m[0] = _m[1] = _m[2] = _m[3] = _m[4] = _m[5] = 0.0; }
 	dse3(gReal k) { _m[0] = _m[1] = _m[2] = _m[3] = _m[4] = _m[5] = k; }
 	dse3(gReal m0, gReal m1, gReal m2, gReal m3, gReal m4, gReal m5) { _m[0] = m0; _m[1] = m1; _m[2] = m2; _m[3] = m3; _m[4] = m4; _m[5] = m5; }
 	dse3(const dse3 &t) { _m[0] = t._m[0]; _m[1] = t._m[1]; _m[2] = t._m[2];	_m[3] = t._m[3]; _m[4] = t._m[4]; _m[5] = t._m[5]; }
@@ -278,7 +278,7 @@ public:
 	friend Vec3 iEulerXYZ(const SO3 &R);
 	friend SO3 Quat(gReal *quat);						// quaternion(quat[4]) --> SO3
 	friend void iQuat(const SO3 &R, gReal *quat);		// SO3 --> quaternion(quat[4])
-	friend bool isSO3(gReal *R, gReal eps = 1E-6);	// is R[9] is a rotation matrix?
+	friend bool isSO3(gReal *R, gReal eps);				// is R[9] is a rotation matrix?
 	friend SO3 GetRotationWithZAxis(Vec3 axis);			// return a rotation matrix whose z-axis is aligned to axis
 };
 
